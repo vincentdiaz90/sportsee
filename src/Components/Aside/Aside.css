@@ -1,0 +1,35 @@
+aside{
+    z-index: -1;
+    position: absolute;
+    background-color: #000;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 94%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; row-gap: 25%;
+    margin-top: 5%;
+}
+
+.pictures{
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    align-items: center;
+    
+}
+
+.pictures > *{
+    width: 7vh;
+    height: auto;
+    padding: 10%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+aside .footer p{
+    white-space: nowrap;
+    color: #fff;
+    transform: rotate(270deg);
+}

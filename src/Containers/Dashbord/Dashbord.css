@@ -1,0 +1,153 @@
+.home{
+    position: absolute;
+    background-color: #fff;
+    left: 6%;
+    right: 0%;
+    bottom: 0%;
+    top: 12%;
+}
+
+.home .container{
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+
+.name-accueil{
+    grid-column: 1 / span 12;
+    grid-row: 1 / span 3;
+}
+
+.name-accueil h2{
+    font-size: 50px;
+    margin-bottom: 30px;
+    
+}
+
+.name-accueil h2 .name-accueil-span{
+    color: red;
+}
+
+.name-accueil h1{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.result{
+    grid-column: 1 / span 12;
+    display: grid;
+    grid-template-columns: repeat(16,1fr);
+    grid-row: 3 / span 12;
+    margin-bottom: 2%;
+}
+
+.activities{
+    grid-column: 1 / span 12;
+
+    border-radius: 5px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(24,1fr);
+    grid-template-rows: repeat(13,1fr);
+}
+
+.activities > *{
+    background-color: rgba(241, 241, 241, 0.4);
+}
+
+.daily-activity{
+    grid-column: 1 / span 24;
+    grid-row: 1 /span 7;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.average-sessions{
+    grid-column: 1 / span 7;
+    grid-row: 9 /span 6;
+}
+
+.graph{
+    grid-column: 9 / span 7;
+    grid-row: 9 /span 6;
+    background-color: #282D30;
+}
+
+.rate{
+    grid-column: 17 / span 8;
+
+    grid-row: 9 /span 6;
+}
+
+.brings{
+    grid-column: 14 / span 3;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 5%;
+}
+
+.brings > *{
+    display: flex;
+    column-gap: 30px;
+    background-color: rgba(241, 241, 241, 0.4);
+    padding: 70px 150px;
+    max-width: 300px;
+    position: relative;
+}
+
+.calories > *, .protein > *, .carbohydrates > *, .lipids > * {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20%;
+    right: 0%;
+}
+
+.brings-image{
+    padding: 20px;
+    position: absolute;
+}
+
+.brings-image-calories{  
+    background: rgba(255, 0, 0, 0.2);
+    border-radius: 6px;
+}
+.brings-image-protein{
+    background: rgba(74, 184, 255, 0.2);
+    border-radius: 6px;
+}
+.brings-image-carbohydrates{
+    background: rgba(249, 206, 35, 0.2);
+    border-radius: 6px;
+}
+.brings-image-lipids{
+    background: rgba(253, 81, 129, 0.2);
+    border-radius: 6px;
+}
+
+.container-data{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.container-data {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.container-data p:nth-child(1){
+    font-weight: 700;
+    font-size: 22px;
+    white-space: nowrap;
+}
