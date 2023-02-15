@@ -1,4 +1,11 @@
-import axios from 'axios';
+import axios from 'axios'
+
+const url = axios.create({
+	baseURL : "http://localhost:3000/user/",
+	headers : {
+		Accept : "application/json"
+	}
+})
 
 /**
  * Get user infos
@@ -6,61 +13,62 @@ import axios from 'axios';
  * @param {string} id User id
  * @returns {object} Response
  */
-function getUser(userId) {
-	try {
-		const response = axios.get(`http://localhost:3000/user/${userId}`);
-		return response.data;
-	} catch (e) {
-		console.log(e);
-	}
-};
-
-//console.log(getUser(12))
-
+async function getUser(userId) {
+    try {
+        const response = await url.get(`${userId}`)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 /**
- * Get user activity 
+ * Get user activity
  *
  * @param {string} id User id
  * @returns {object} Response
  */
- function getUserActivity(userId) {
-	try {
-		const response = axios.get(`http://localhost:3000/user/${userId}/activity`);
-		return response.data;
-	} catch (e) {
-		console.log(e);
-	}
-};
+async function getUserActivity(userId) {
+    try {
+        const response = await url.get(`${userId}/activity`)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 /**
- * Get user average session 
+ * Get user average session
  *
  * @param {string} id User id
  * @returns {object} Response
  */
- function getUserAverageSessions(userId) {
-	try {
-		const response = axios.get(`http://localhost:3000/user/${userId}/average-sessions`);
-		return response.data;
-	} catch (e) {
-		console.log(e);
-	}
-};
+async function getUserAverageSessions(userId) {
+    try {
+        const response = await url.get(
+            `${userId}/average-sessions`
+        )
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 /**
- * Get user performance 
+ * Get user performance
  *
  * @param {string} id User id
  * @returns {object} Response
  */
- function getUserPerformance(userId) {
-	try {
-		const response = axios.get(`http://localhost:3000/user/${userId}/performance`);
-		return response.data;
-	} catch (e) {
-		console.log(e);
-	}
-};
+async function getUserPerformance(userId) {
+    try {
+        const response = await url.get(
+            `${userId}/performance`
+        )
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
 
-export {getUser, getUserActivity, getUserAverageSessions, getUserPerformance}
+export { getUser, getUserActivity, getUserAverageSessions, getUserPerformance }

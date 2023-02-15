@@ -8,8 +8,8 @@ import DashbordAPI from '../Dashbord/DashbordAPI/DashbordAPI'
 export default function Home() {
     return (
         <>
-            <DashbordMock />
-            {/* <DashbordAPI />  */}
+            {/* <DashbordMock /> */}
+            <DashbordAPI /> 
         </>
     )
 }

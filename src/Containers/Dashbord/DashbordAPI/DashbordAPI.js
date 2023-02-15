@@ -14,11 +14,15 @@ import Performance from '../../../Components/Performance/Performance'
 import NavbarAPI from '../../../Components/NavbarMockAPI/NavbarAPI/NavbarAPI'
 
 //import Mock from '../../../assets/Mock/Mock'
-import { getUser, getUserActivity, getUserAverageSessions, getUserPerformance} from '../../../data/ApiAxiosCall'
+import {
+    getUser,
+    getUserActivity,
+    getUserAverageSessions,
+    getUserPerformance,
+} from '../../../data/ApiAxiosCall'
 
 export default function DashbordMock() {
     //console.log(Mock)
-
 
     // const [error, setError] = useState(false)
 
@@ -38,39 +42,34 @@ export default function DashbordMock() {
         setUserId(IdValue)
     }
 
-    //console.log(userInfo);
+    //console.log(userId);
 
+    let currentUserInfo
+    let currentUserActivities
+    let currentUserAverageSessions
+    let currentUserPerformances
 
+    if (userId) {
+        const usersInfos = getUser(userId)
+        console.log('usersInfos', usersInfos)
 
-    const usersInfos = getUser(userId)
-    console.log('usersInfos', usersInfos)
+        const userActivities = getUserActivity(userId)
+        console.log('userActivities', userActivities)
 
-    const userActivities = getUserActivity(userId)
-    console.log('userActivities', userActivities)
+        const userAverageSessions = getUserAverageSessions(userId)
+        console.log('userAverageSessions', userAverageSessions)
 
-    const userAverageSessions = getUserAverageSessions(userId)
-    console.log('userAverageSessions', userAverageSessions)
+        const userPerformances = getUserPerformance(userId)
+        console.log('userPerformances', userPerformances)
 
-    const userPerformances = getUserPerformance(userId)
-    console.log('userPerformances', userPerformances)
+        currentUserInfo = usersInfos
 
-    // const currentUserInfo = usersInfos.find(
-    //     (usersInfo) => usersInfo.id.toString() === userId?.toString()
-    // )
+        currentUserActivities = userActivities
 
-    // const currentUserActivities = userActivities.find(
-    //     (userActivity) =>
-    //         userActivity.userId.toString() === userId?.toString()
-    // )
+        currentUserAverageSessions = userAverageSessions
 
-    // const currentUserAverageSessions = userAverageSessions.find(
-    //     (userAverageSession) =>
-    //         userAverageSession.userId.toString() === userId?.toString()
-    // )
-    // const currentUserPerformances = userPerformances.find(
-    //     (userPerformance) =>
-    //         userPerformance.userId.toString() === userId?.toString()
-    // )
+        currentUserPerformances = userPerformances
+    }
 
     return (
         <>
@@ -81,7 +80,7 @@ export default function DashbordMock() {
                         <h2>
                             Bonjour{' '}
                             <span className="name-accueil-span">
-                                {/* {currentUserInfo?.userInfos.firstName} */}
+                                {currentUserInfo?.userInfos.firstName}
                             </span>
                         </h2>
                         <h1>
@@ -93,37 +92,37 @@ export default function DashbordMock() {
                         <div className="activities">
                             <div className="daily-activity">
                                 <MainData
-                                    // dataActivity={
-                                    //     currentUserActivities?.sessions
-                                    // }
+                                    dataActivity={
+                                        currentUserActivities?.sessions
+                                    }
                                 />
                             </div>
                             <div className="average-sessions">
                                 <AverageSessions
-                                    // dataAverageSessions={
-                                    //     currentUserAverageSessions?.sessions
-                                    // }
+                                    dataAverageSessions={
+                                        currentUserAverageSessions?.sessions
+                                    }
                                 />
                             </div>
                             <div className="graph">
                                 <Performance
-                                    // dataPerformances={
-                                    //     currentUserPerformances?.data
-                                    // }
+                                    dataPerformances={
+                                        currentUserPerformances?.data
+                                    }
                                 />
                             </div>
                             <div className="rate">
-                                {/* <Activity
+                                <Activity
                                     dataScore={
                                         currentUserInfo?.todayScore
                                             ? currentUserInfo?.todayScore
                                             : currentUserInfo?.score
                                     }
-                                /> */}
+                                />
                                 <Activity
-                                    // dataScore={
-                                    //     currentUserInfo && currentUserInfo
-                                    // }
+                                    dataScore={
+                                        currentUserInfo && currentUserInfo
+                                    }
                                 />
                             </div>
                         </div>
@@ -136,7 +135,7 @@ export default function DashbordMock() {
                                 />
                                 <div className="container-data">
                                     <p>
-                                        {/* {currentUserInfo?.keyData.calorieCount}{' '} */}
+                                        {currentUserInfo?.keyData.calorieCount}{' '}
                                         KCal
                                     </p>
                                     <p>Calories</p>
@@ -150,7 +149,7 @@ export default function DashbordMock() {
                                 />
                                 <div className="container-data">
                                     <p>
-                                        {/* {currentUserInfo?.keyData.proteinCount}g */}
+                                        {currentUserInfo?.keyData.proteinCount}g
                                     </p>
                                     <p>Proteines</p>
                                 </div>
@@ -162,13 +161,13 @@ export default function DashbordMock() {
                                     alt="glucides"
                                 />
                                 <div className="container-data">
-                                    {/* <p>
+                                    <p>
                                         {
                                             currentUserInfo?.keyData
                                                 .carbohydrateCount
                                         }
                                         g
-                                    </p> */}
+                                    </p>
                                     <p>Glucides</p>
                                 </div>
                             </div>
@@ -180,7 +179,7 @@ export default function DashbordMock() {
                                 />
                                 <div className="container-data">
                                     <p>
-                                        {/* {currentUserInfo?.keyData.lipidCount}g */}
+                                        {currentUserInfo?.keyData.lipidCount}g
                                     </p>
                                     <p>Lipides</p>
                                 </div>
