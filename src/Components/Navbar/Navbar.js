@@ -13,19 +13,19 @@ export default function Navbar() {
             </NavLink>
 
             <NavLink
-                to="/profil"
+                to="/Profil"
                 className="nav-link"
             >
                 Profil
             </NavLink>
             <NavLink
-                to="/reglage"
+                to="/Settings"
                 className="nav-link"
             >
                 Réglage
             </NavLink>
             <NavLink
-                to="/communaute"
+                to="/Community"
                 className="nav-link"
             >
                 Communauté

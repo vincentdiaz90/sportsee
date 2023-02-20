@@ -14,9 +14,9 @@ export default function RouterPath() {
             <Route path="/" element={<Home />} />
             <Route path="/mock/:slug" element={<DashbordMock />} />
             <Route path="/user/:slug" element={<DashbordAPI />} />
-            <Route path="/Communauté" element={<Comunity />} />
-            <Route path="/Profil/:slug" element={<Profil />} />
-            <Route path="/Settings/:slug" element={<Settings />} />
+            <Route path="/Community" element={<Comunity />} />
+            <Route path="/Profil" element={<Profil />} />
+            <Route path="/Settings" element={<Settings />} />
             <Route path="*" element={<ErrorPage />} />
         </Routes>
     )

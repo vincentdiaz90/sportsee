@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 const url = axios.create({
-	baseURL : "http://localhost:3000/user/",
-	headers : {
-		Accept : "application/json"
-	}
+    baseURL: 'http://localhost:3000/user/',
+    headers: {
+        Accept: 'application/json',
+    },
 })
 
 /**
@@ -15,8 +15,9 @@ const url = axios.create({
  */
 async function getUser(userId) {
     try {
-        const response = await url.get(`${userId}`)
-        return response.data
+        const response = await url.get(`/${userId}`)
+        //console.log(response.data.data)
+        return response.data.data
     } catch (e) {
         console.log(e)
     }
@@ -30,7 +31,7 @@ async function getUser(userId) {
  */
 async function getUserActivity(userId) {
     try {
-        const response = await url.get(`${userId}/activity`)
+        const response = await url.get(`/${userId}/activity`)
         return response.data
     } catch (e) {
         console.log(e)
@@ -45,9 +46,7 @@ async function getUserActivity(userId) {
  */
 async function getUserAverageSessions(userId) {
     try {
-        const response = await url.get(
-            `${userId}/average-sessions`
-        )
+        const response = await url.get(`/${userId}/average-sessions`)
         return response.data
     } catch (e) {
         console.log(e)
@@ -62,9 +61,7 @@ async function getUserAverageSessions(userId) {
  */
 async function getUserPerformance(userId) {
     try {
-        const response = await url.get(
-            `${userId}/performance`
-        )
+        const response = await url.get(`/${userId}/performance`)
         return response.data
     } catch (e) {
         console.log(e)
