@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Dashbord.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 import Calories from '../../../assets/pictures/components/brings/Calories.png'
 import Carbohydrate from '../../../assets/pictures/components/brings/Carbohydrate.png'
@@ -18,14 +19,11 @@ import Mock from '../../../assets/Mock/Mock'
 export default function DashbordMock() {
     //console.log(Mock)
 
-    // const [error, setError] = useState(false)
+    const [error, setError] = useState(false)
+    const [idFind, setIdFind] = useState(false)
 
     const [userId, setUserId] = useState()
-    // const [activity, setActivity] = useState()
-    // const [averageSession, setAverageSession] = useState()
-    // const [userPerformance, setUserPerformance] = useState()
 
-    /* Use effect */
 
     /* Selection du bon Id*/
 
@@ -35,8 +33,6 @@ export default function DashbordMock() {
         IdValue = parseInt(IdValue)
         setUserId(IdValue)
     }
-
-    //console.log(userInfo);
 
     const usersInfos = Mock.USER_MAIN_DATA
     const userActivities = Mock.USER_ACTIVITY
@@ -60,10 +56,37 @@ export default function DashbordMock() {
             userPerformance.userId.toString() === userId?.toString()
     )
 
+    /**
+     * Allow to control the return of value
+     * @params validity {object}
+     * @params error {boleen}
+     * @returns {boleen}
+     */
+
+    function validity() {
+        if( currentUserInfo &&
+            currentUserActivities &&
+            currentUserAverageSessions &&
+            currentUserPerformances &&
+            userId === currentUserInfo?.id) {
+                return true
+            }
+        return false
+    }
+    validity() 
+
+
+    useEffect( () => {
+        if(validity()) {return setError(false)} return setError(true)
+    },[userId])
+
+
+    const navigate = useNavigate()
+
     return (
         <>
             <NavbarMock dataLoad={SearchData} />
-            {userId && (
+            {!error ? (
                 <div className="home">
                     <div className="container">
                         <div className="name-accueil">
@@ -183,7 +206,8 @@ export default function DashbordMock() {
                         </div>
                     </div>
                 </div>
-            )}
+            ) : navigate('/error')
+            }
         </>
     )
 }

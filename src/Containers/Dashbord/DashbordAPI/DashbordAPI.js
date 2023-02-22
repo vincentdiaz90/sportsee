@@ -24,6 +24,8 @@ import {
 export default function DashbordAPI() {
     const [notError, setNotError] = useState(true)
 
+    const [error, setError] = useState(false)
+
     const [userId, setUserId] = useState()
 
     const [currentUserInfo, setCurrentUserInfo] = useState()
@@ -43,46 +45,59 @@ export default function DashbordAPI() {
         setUserId(IdValue)
     }
 
+
     async function getDatas(userId) {
         if (userId) {
             const usersInfos = await getUser(userId)
-            console.log('usersInfos', usersInfos)
+            //console.log('usersInfos', usersInfos)
             setCurrentUserInfo(usersInfos)
 
             const userActivities = await getUserActivity(userId)
-            console.log('userActivities', userActivities)
+            //console.log('userActivities', userActivities)
             setCurrentUserActivities(userActivities)
 
             const userAverageSessions = await getUserAverageSessions(userId)
-            console.log('userAverageSessions', userAverageSessions)
+            //console.log('userAverageSessions', userAverageSessions)
             setCurrentUserAverageSessions(userAverageSessions)
 
             const userPerformances = await getUserPerformance(userId)
-            console.log('userPerformances', userPerformances)
+            //console.log('userPerformances', userPerformances)
             setCurrentUserPerformances(userPerformances)
         }
     }
 
-    useEffect(() => {
+    async function errorValidity(){
+        await getDatas();
+        if(currentUserInfo && currentUserActivities && currentUserAverageSessions && currentUserPerformances){
+            setError(false)
+        } else {
+            setError(true)
+        }
+    }
+
+    useEffect( () => {
         getDatas(userId)
+        errorValidity()
 
         if (
-            currentUserInfo ||
-            currentUserActivities ||
-            currentUserAverageSessions ||
+            currentUserInfo &&
+            currentUserActivities &&
+            currentUserAverageSessions &&
             currentUserPerformances
         ) {
             return setNotError(true)
         }
         return setNotError(false)
+
+
     }, [userId])
 
+//console.log(error && error);
 
     return (
         <>
             <NavbarAPI dataLoad={SearchData} />
-
-            {notError && (
+            {notError ? (
                 <div className="home">
                     <div className="container">
                         <div className="name-accueil">
@@ -204,7 +219,7 @@ export default function DashbordAPI() {
                         </div>
                     </div>
                 </div>
-            )}
+            ): ''}
         </>
     )
 }
