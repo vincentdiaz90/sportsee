@@ -19,7 +19,7 @@ async function getUser(userId) {
         //console.log(response.data.data)
         return response.data.data
     } catch (e) {
-        console.log(e)
+        return null
     }
 }
 
@@ -34,7 +34,7 @@ async function getUserActivity(userId) {
         const response = await url.get(`/${userId}/activity`)
         return response.data
     } catch (e) {
-        console.log(e)
+        return null
     }
 }
 
@@ -49,7 +49,7 @@ async function getUserAverageSessions(userId) {
         const response = await url.get(`/${userId}/average-sessions`)
         return response.data
     } catch (e) {
-        console.log(e)
+        return null
     }
 }
 
@@ -64,7 +64,7 @@ async function getUserPerformance(userId) {
         const response = await url.get(`/${userId}/performance`)
         return response.data
     } catch (e) {
-        console.log(e)
+        return null
     }
 }
 

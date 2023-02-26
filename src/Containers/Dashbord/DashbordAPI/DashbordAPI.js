@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Dashbord.css'
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import Calories from '../../../assets/pictures/components/brings/Calories.png'
 import Carbohydrate from '../../../assets/pictures/components/brings/Carbohydrate.png'
@@ -12,7 +12,6 @@ import MainData from '../../../Components/MainData/MainData'
 import AverageSessions from '../../../Components/AverageSessions/AverageSessions'
 import Activity from '../../../Components/Activity/Activity'
 import Performance from '../../../Components/Performance/Performance'
-import NavbarAPI from '../../../Components/NavbarMockAPI/NavbarAPI/NavbarAPI'
 
 import {
     getUser,
@@ -22,33 +21,25 @@ import {
 } from '../../../data/ApiAxiosCall'
 
 export default function DashbordAPI() {
-    const [notError, setNotError] = useState(true)
-
-    const [error, setError] = useState(false)
-
-    const [userId, setUserId] = useState()
+    //const [notError, setNotError] = useState(true)
 
     const [currentUserInfo, setCurrentUserInfo] = useState()
     const [currentUserActivities, setCurrentUserActivities] = useState()
-    const [currentUserAverageSessions, setCurrentUserAverageSessions] =
-        useState()
+    const [currentUserAverageSessions, setCurrentUserAverageSessions] = useState()
     const [currentUserPerformances, setCurrentUserPerformances] = useState()
 
     const navigate = useNavigate()
 
+    const { userId } = useParams()
+
     /* Selection du bon Id*/
 
-    const SearchData = (e) => {
-        let IdValue = e.target.id
-        IdValue = IdValue.split('-')[1]
-        IdValue = parseInt(IdValue)
-        setUserId(IdValue)
-    }
-
+    let usersInfos
 
     async function getDatas(userId) {
+        console.log(userId);
         if (userId) {
-            const usersInfos = await getUser(userId)
+            usersInfos = await getUser(userId)
             //console.log('usersInfos', usersInfos)
             setCurrentUserInfo(usersInfos)
 
@@ -66,29 +57,8 @@ export default function DashbordAPI() {
         }
     }
 
-    async function errorValidity(){
-        await getDatas();
-        if(currentUserInfo && currentUserActivities && currentUserAverageSessions && currentUserPerformances){
-            setError(false)
-        } else {
-            setError(true)
-        }
-    }
-
     useEffect( () => {
         getDatas(userId)
-        errorValidity()
-
-        if (
-            currentUserInfo &&
-            currentUserActivities &&
-            currentUserAverageSessions &&
-            currentUserPerformances
-        ) {
-            return setNotError(true)
-        }
-        return setNotError(false)
-
 
     }, [userId])
 
@@ -96,8 +66,8 @@ export default function DashbordAPI() {
 
     return (
         <>
-            <NavbarAPI dataLoad={SearchData} />
-            {notError ? (
+            {currentUserInfo ? (
+            
                 <div className="home">
                     <div className="container">
                         <div className="name-accueil">
@@ -219,7 +189,9 @@ export default function DashbordAPI() {
                         </div>
                     </div>
                 </div>
-            ): ''}
+            ) : navigate('/error')}
+            
+            
         </>
     )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Dashbord.css'
 import { useState, useEffect } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import Calories from '../../../assets/pictures/components/brings/Calories.png'
 import Carbohydrate from '../../../assets/pictures/components/brings/Carbohydrate.png'
@@ -12,27 +12,17 @@ import MainData from '../../../Components/MainData/MainData'
 import AverageSessions from '../../../Components/AverageSessions/AverageSessions'
 import Activity from '../../../Components/Activity/Activity'
 import Performance from '../../../Components/Performance/Performance'
-import NavbarMock from '../../../Components/NavbarMockAPI/NavbarMock/NavbarMock'
 
 import Mock from '../../../assets/Mock/Mock'
 
 export default function DashbordMock() {
-    //console.log(Mock)
-
-    const [error, setError] = useState(false)
-    const [idFind, setIdFind] = useState(false)
-
-    const [userId, setUserId] = useState()
 
 
     /* Selection du bon Id*/
 
-    const SearchData = (e) => {
-        let IdValue = e.target.id
-        IdValue = IdValue.split('-')[1]
-        IdValue = parseInt(IdValue)
-        setUserId(IdValue)
-    }
+    const { userId } = useParams()
+
+    const [error, setError] = useState(false)
 
     const usersInfos = Mock.USER_MAIN_DATA
     const userActivities = Mock.USER_ACTIVITY
@@ -68,13 +58,12 @@ export default function DashbordMock() {
             currentUserActivities &&
             currentUserAverageSessions &&
             currentUserPerformances &&
-            userId === currentUserInfo?.id) {
+            parseInt(userId) === parseInt(currentUserInfo?.id)) {
                 return true
             }
         return false
     }
     validity() 
-
 
     useEffect( () => {
         if(validity()) {return setError(false)} return setError(true)
@@ -85,7 +74,6 @@ export default function DashbordMock() {
 
     return (
         <>
-            <NavbarMock dataLoad={SearchData} />
             {!error ? (
                 <div className="home">
                     <div className="container">
