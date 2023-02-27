@@ -14,6 +14,12 @@ export default function AverageSessions(props) {
 
   const { dataAverageSessions } = props
 
+      /**
+     * Format X axis into day value instead of number
+     * @param {object} day
+     * @returns {object}
+     */
+
     const xAxisFormatter = (day) => {
     switch(day){
         case 1: return 'L';

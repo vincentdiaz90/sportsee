@@ -1,5 +1,4 @@
 aside{
-    z-index: -1;
     position: absolute;
     background-color: #000;
     top: 0px;
@@ -17,7 +16,6 @@ aside{
     flex-direction: column;
     row-gap: 40px;
     align-items: center;
-    
 }
 
 .pictures > *{
@@ -26,6 +24,11 @@ aside{
     padding: 10%;
     background-color: #fff;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.aside-pictures{
+    cursor: pointer;
 }
 
 aside .footer p{

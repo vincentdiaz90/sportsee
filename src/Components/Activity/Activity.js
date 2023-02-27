@@ -7,9 +7,8 @@ import {
 import './Activity.css'
 
 function Activity(props) {
-    const { dataScore } = props
 
-    //console.log(dataScore)
+    const { dataScore } = props
 
     /**
      * Format into one type for score data (currently : score & todayScore)
@@ -29,8 +28,6 @@ function Activity(props) {
     if (dataScore) {
         formatDataScore(dataScore)
     }
-
-    //console.log(dataScore && dataScore)
 
     /**
      * Format the score in percentage

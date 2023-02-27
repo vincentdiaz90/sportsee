@@ -15,10 +15,11 @@ export default function MainData(props) {
 
     const { dataActivity } = props
 
-    //console.log(dataActivity)
-
-
-    // date in day formatter
+    /**
+     * Format date in day formatter
+     * @param {object} dataActivity.day
+     * @returns {object} number of the day
+     */
 
     const dataResetActivity = []
 
@@ -32,8 +33,7 @@ export default function MainData(props) {
         dataResetActivity.push(el)
         return dataResetActivity
     })
-
-    //console.log(dataResetActivity && dataResetActivity)
+    
 
     /**
      * Format Tooltip

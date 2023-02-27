@@ -12,9 +12,7 @@ import {
 export default function Performance(props) {
     const { dataPerformances } = props
 
-    //console.log(dataPerformances)
-
-    const skillsTab = ['Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité']
+    const skillsTab = ['Intensité', 'Vitesse', 'Force', 'Endurance','Energie','Cardio']
 
     const dataResetPerformance = []
 
@@ -34,8 +32,6 @@ export default function Performance(props) {
         dataResetPerformance.push(el)
         return dataResetPerformance
     })
-
-    //console.log(dataResetPerformance && dataResetPerformance);
 
 
     /**
