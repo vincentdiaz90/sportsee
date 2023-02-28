@@ -1,8 +1,44 @@
-# Getting Started with Create React App
+
+# 1. Launching the project
+
+## 1.1) Prerequis
+NodeJS (version 16.14.0) to run npm command or
+Yarn
+1.2 Installing the project
+Launching Back-End
+Clone the repo of the back-end
+
+git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git
+
+Install the dependencies by running the command
+
+yarn (or yarn install) or npm i (or npm install)
+
+Launch the back-end on port 3000 (http://localhost:3000) by running the command
+
+yarn run dev
+
+Launching Front-End
+Clone the repo of the front-end
+
+git clone https://github.com/vincentdiaz90/sportsee.git
+
+Install the dependencies by running the command
+
+npm i (or npm install)
+
+Launch the front-end on port 3001 (http://localhost:3001) by running the command
+
+yarn start or npm start
+
+Currently, there are 2 users (user 12 & user 18)
+
+
+# 2.Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 2.1) Available Scripts
 
 In the project directory, you can run:
 
@@ -39,7 +75,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## 2.2) Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
