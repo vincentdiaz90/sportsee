@@ -103,7 +103,6 @@ export default function MainData(props) {
                         />
                         <Tooltip 
                             content={dataActivity && <CustomTooltipMainData />}
-                            //position={{x:0, y:7}}
                         />
                         <Legend
                             verticalAlign="top"

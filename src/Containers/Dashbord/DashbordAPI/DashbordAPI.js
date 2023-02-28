@@ -21,7 +21,6 @@ import {
 } from '../../../data/ApiAxiosCall'
 
 export default function DashbordAPI() {
-    //const [notError, setNotError] = useState(true)
 
     const [currentUserInfo, setCurrentUserInfo] = useState()
     const [currentUserActivities, setCurrentUserActivities] = useState()
@@ -37,22 +36,19 @@ export default function DashbordAPI() {
     let usersInfos
 
     async function getDatas(userId) {
-        console.log(userId);
+        
         if (userId) {
             usersInfos = await getUser(userId)
-            //console.log('usersInfos', usersInfos)
             setCurrentUserInfo(usersInfos)
 
             const userActivities = await getUserActivity(userId)
-            //console.log('userActivities', userActivities)
             setCurrentUserActivities(userActivities)
 
             const userAverageSessions = await getUserAverageSessions(userId)
-            //console.log('userAverageSessions', userAverageSessions)
             setCurrentUserAverageSessions(userAverageSessions)
 
             const userPerformances = await getUserPerformance(userId)
-            //console.log('userPerformances', userPerformances)
+
             setCurrentUserPerformances(userPerformances)
         }
     }
@@ -62,7 +58,6 @@ export default function DashbordAPI() {
 
     }, [userId])
 
-//console.log(error && error);
 
     return (
         <>

@@ -28,7 +28,6 @@ export default function Performance(props) {
         for(let i = 0; i<skillsTab.length; i++){
             el = {...el, skill : skillsTab[key]}
         }
-        //console.log(el);
         dataResetPerformance.push(el)
         return dataResetPerformance
     })
@@ -55,7 +54,7 @@ export default function Performance(props) {
 
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <RadarChart outerRadius={82} data={dataResetPerformance && dataResetPerformance}>
+            <RadarChart outerRadius={80} data={dataResetPerformance && dataResetPerformance}>
                 <PolarGrid radialLines={false} />
                 <PolarAngleAxis
                     dataKey="skill"

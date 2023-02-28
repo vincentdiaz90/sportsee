@@ -1,5 +1,5 @@
 aside{
-    position: absolute;
+    position: fixed;
     background-color: #000;
     top: 0px;
     bottom: 0px;

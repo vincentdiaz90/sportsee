@@ -1,6 +1,6 @@
 import './ErrorPage.css'
 import NavbarAPI from '../../Components/NavbarMockAPI/NavbarAPI/NavbarAPI'
-//import NavbarMock from '../../Components/NavbarMockAPI/NavbarMock/NavbarMock'
+import NavbarMock from '../../Components/NavbarMockAPI/NavbarMock/NavbarMock'
 
 
 export default function ErrorPage() {
