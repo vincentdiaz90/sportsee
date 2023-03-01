@@ -1,3 +1,4 @@
+import Format from '../../data/classModif'
 import React from 'react'
 import './Performance.css'
 import {
@@ -12,25 +13,11 @@ import {
 export default function Performance(props) {
     const { dataPerformances } = props
 
-    const skillsTab = ['Intensité', 'Vitesse', 'Force', 'Endurance','Energie','Cardio']
+    const formatData = new Format(dataPerformances)
 
-    const dataResetPerformance = []
+    const formatDataTab = formatData.CurrentUserPerformances
 
-
-    /**
-     * Format array dataperformances
-     * @param {array} array
-     * @returns array + new column name skill
-     */    
-
-    dataPerformances?.map( (el,key) => {
-        //console.log(key);
-        for(let i = 0; i<skillsTab.length; i++){
-            el = {...el, skill : skillsTab[key]}
-        }
-        dataResetPerformance.push(el)
-        return dataResetPerformance
-    })
+    //console.log(formatDataTab);
 
 
     /**
@@ -54,7 +41,7 @@ export default function Performance(props) {
 
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <RadarChart outerRadius={80} data={dataResetPerformance && dataResetPerformance}>
+            <RadarChart outerRadius={80} data={formatDataTab && formatDataTab}>
                 <PolarGrid radialLines={false} />
                 <PolarAngleAxis
                     dataKey="skill"

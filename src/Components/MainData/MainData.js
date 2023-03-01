@@ -1,3 +1,4 @@
+import Format from '../../data/classModif'
 import React from 'react'
 import './MainData.css'
 import {
@@ -15,24 +16,14 @@ export default function MainData(props) {
 
     const { dataActivity } = props
 
-    /**
-     * Format date in day formatter
-     * @param {object} dataActivity.day
-     * @returns {object} number of the day
-     */
+    const formatData = new Format(dataActivity)
 
-    const dataResetActivity = []
+    //console.log(formatData);
 
-    dataActivity?.map((el) => {
-        if(el.day.split('-')[2].includes('0')){
-            el = {...el, currentDay : el.day.split('-')[2].split('')[1]} 
-        }
-        else {
-            el = {...el, currentDay : el.day.split('-')[2]} 
-        }
-        dataResetActivity.push(el)
-        return dataResetActivity
-    })
+    const formatDataTab = formatData.CurrentUserActivities
+
+    //console.log(formatDataTab)
+
     
 
     /**
@@ -43,15 +34,15 @@ export default function MainData(props) {
      */
 
     function CustomTooltipMainData ({payload, active}) {
-        if (active) {
-            return (
-                <div className='activityChartTooltip'>
-                    <div>{`${payload[0]?.value}`}kg</div>
-                    <div>{`${payload[1]?.value}`}Kcal</div>
-                </div>
-            )
-        }
-        return null
+        // if (active) {
+        //     return (
+        //         <div className='activityChartTooltip'>
+        //             <div>{`${payload[0]?.value}`}kg</div>
+        //             <div>{`${payload[1]?.value}`}Kcal</div>
+        //         </div>
+        //     )
+        // }
+        // return null
     }
 
 
@@ -65,7 +56,7 @@ export default function MainData(props) {
                     <BarChart
                         width={1200}
                         height={1200}
-                        data={dataResetActivity && dataResetActivity}
+                        data={formatDataTab && formatDataTab}
                         margin={{
                             top: 0,
                             right: 50,

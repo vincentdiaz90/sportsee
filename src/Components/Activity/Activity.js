@@ -1,3 +1,4 @@
+import Format from '../../data/classModif'
 import {
     RadialBarChart,
     RadialBar,
@@ -9,6 +10,18 @@ import './Activity.css'
 function Activity(props) {
 
     const { dataScore } = props
+
+    //console.log(dataScore)
+
+    const formatData = new Format(dataScore)
+
+    //console.log(formatData);
+
+    const formatDataTab = formatData.CurrentUserInfo
+
+    //console.log(formatDataTab);
+
+    //console.log(dataScore);
 
     /**
      * Format into one type for score data (currently : score & todayScore)
@@ -75,9 +88,9 @@ function Activity(props) {
                 </RadialBarChart>
             </ResponsiveContainer>
 
-            <p className="scoreResult activity-score-result">
+            {/* <p className="scoreResult activity-score-result">
                 {scorePercent && scorePercent} % <br /> de votre <br /> objectif
-            </p>
+            </p> */}
         </section>
     )
 }
