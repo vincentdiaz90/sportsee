@@ -33,6 +33,8 @@ export default function DashbordMock() {
         (usersInfo) => usersInfo.id.toString() === userId?.toString()
     )
 
+    console.log(currentUserInfo);
+
     const currentUserActivities = userActivities.find(
         (userActivity) => userActivity.userId.toString() === userId?.toString()
     )

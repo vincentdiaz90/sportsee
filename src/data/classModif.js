@@ -68,10 +68,10 @@ class Format {
 
     dataResetUserInfo() {
             const currentUserInfo = this._currentUserInfo
-                if(currentUserInfo.todayScore){
+                if(currentUserInfo?.todayScore){
                     return { ...currentUserInfo, score: currentUserInfo.todayScore, scorePercent: Math.round(currentUserInfo.todayScore * 100) }
                 }
-                else if(currentUserInfo.score){
+                else if(currentUserInfo?.score){
                     return { ...currentUserInfo, scorePercent: Math.round(currentUserInfo.score * 100) }
                 }     
 
