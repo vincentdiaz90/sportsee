@@ -11,51 +11,12 @@ function Activity(props) {
 
     const { dataScore } = props
 
-    //console.log(dataScore)
+    console.log(dataScore)
 
     const formatData = new Format(dataScore)
 
-    //console.log(formatData);
-
     const formatDataTab = formatData.CurrentUserInfo
 
-    //console.log(formatDataTab);
-
-    //console.log(dataScore);
-
-    /**
-     * Format into one type for score data (currently : score & todayScore)
-     * @param {object} score
-     * @param {object} todayScore
-     * @returns {object} score
-     */
-
-    function formatDataScore(data) {
-        if (data.todayScore) {
-            data.score = data.todayScore
-            delete data.todayScore
-            return data
-        }
-    }
-
-    if (dataScore) {
-        formatDataScore(dataScore)
-    }
-
-    /**
-     * Format the score in percentage
-     * @param {object} data
-     * @returns an integer for percentage
-     */
-    function calculatePercent(data) {
-        return Math.round(data * 100)
-    }
-
-    let scorePercent
-
-    if (dataScore) {
-        scorePercent = calculatePercent(dataScore.score)
-    }
 
     return (
         <section className="activity">
@@ -68,7 +29,7 @@ function Activity(props) {
                     innerRadius="100"
                     outerRadius="130"
                     barSize="25px"
-                    data={[dataScore]}
+                    data={[formatDataTab]}
                     startAngle={180}
                     endAngle={-180}
                 >
@@ -88,9 +49,9 @@ function Activity(props) {
                 </RadialBarChart>
             </ResponsiveContainer>
 
-            {/* <p className="scoreResult activity-score-result">
-                {scorePercent && scorePercent} % <br /> de votre <br /> objectif
-            </p> */}
+            <p className="scoreResult activity-score-result">
+                {formatDataTab?.scorePercent} % <br /> de votre <br /> objectif
+            </p>
         </section>
     )
 }

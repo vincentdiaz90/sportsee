@@ -9,8 +9,8 @@ export default function ErrorPage() {
     <div className='error'>
       <h1>Une erreur est survenue</h1>
       <div className='error-nav'>
-        {/* <NavbarAPI /> */}
-        <NavbarMock />
+        <NavbarAPI />
+        {/* <NavbarMock /> */}
       </div>
     </div>
   )

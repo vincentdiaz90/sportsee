@@ -2,7 +2,7 @@ class Format {
     constructor(data) {
         this._currentUserActivities = data;
         this._currentUserPerformances = data;
-        //this._currentUserInfo = data;
+        this._currentUserInfo = data;
     }
 
     get CurrentUserActivities() {
@@ -16,8 +16,6 @@ class Format {
     get CurrentUserInfo() {
         return this.dataResetUserInfo()
     }
-
-
 
 
     /**
@@ -69,17 +67,13 @@ class Format {
      */
 
     dataResetUserInfo() {
-            const currentUserInfo = this._currentUserInfo?.map(
-            (el) => {
-                console.log(el);
-                if(el.todayScore){
-                    return { ...el, score: el.todayScore }
+            const currentUserInfo = this._currentUserInfo
+                if(currentUserInfo.todayScore){
+                    return { ...currentUserInfo, score: currentUserInfo.todayScore }
                 }
-                if(el.score){
-                    return { ...el, scorePercent: Math.round(el.score * 100) }
-                }
-            }       
-        )
+                if(currentUserInfo.score){
+                    return { ...currentUserInfo, scorePercent: Math.round(currentUserInfo.score * 100) }
+                }     
 
         return currentUserInfo;
     }
