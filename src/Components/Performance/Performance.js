@@ -17,7 +17,6 @@ export default function Performance(props) {
 
     const formatDataTab = formatData.CurrentUserPerformances
 
-    //console.log(formatDataTab);
 
 
     /**

@@ -11,8 +11,6 @@ function Activity(props) {
 
     const { dataScore } = props
 
-    console.log(dataScore)
-
     const formatData = new Format(dataScore)
 
     const formatDataTab = formatData.CurrentUserInfo

@@ -18,11 +18,7 @@ export default function MainData(props) {
 
     const formatData = new Format(dataActivity)
 
-    //console.log(formatData);
-
     const formatDataTab = formatData.CurrentUserActivities
-
-    //console.log(formatDataTab)
 
     
 
@@ -34,15 +30,15 @@ export default function MainData(props) {
      */
 
     function CustomTooltipMainData ({payload, active}) {
-        // if (active) {
-        //     return (
-        //         <div className='activityChartTooltip'>
-        //             <div>{`${payload[0]?.value}`}kg</div>
-        //             <div>{`${payload[1]?.value}`}Kcal</div>
-        //         </div>
-        //     )
-        // }
-        // return null
+        if (active) {
+            return (
+                <div className='activityChartTooltip'>
+                    <div>{`${payload[0]?.value}`}kg</div>
+                    <div>{`${payload[1]?.value}`}Kcal</div>
+                </div>
+            )
+        }
+        return null
     }
 
 
