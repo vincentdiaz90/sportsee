@@ -177,7 +177,7 @@
     }
 }
 
-@media screen and (max-width:1170px){
+@media screen and (max-width:1550px){
     .activities{
         display: flex;
         flex-wrap: wrap;
@@ -197,7 +197,7 @@
         display: block;
         width: 35%;
         min-width: 300px;
-        height: 25vh;
+        height: 35vh;
     }
 
     .pictures img{
